@@ -16,8 +16,8 @@ Gammapy and it's dependencies by executing these commands in a terminal:
 
 .. code-block:: bash
 
-    curl -O https://gammapy.org/download/install/gammapy-0.24-environment.yml
-    conda env create -f gammapy-0.24-environment.yml
+    curl -O https://gammapy.org/download/install/gammapy-0.25-environment.yml
+    conda env create -f gammapy-0.25-environment.yml
 
 .. note::
 
@@ -29,7 +29,7 @@ This creates a conda environment called ``gammapy-0.18.1`` which you can activat
 
 .. code-block:: bash
 
-    conda activate gammapy-0.24
+    conda activate gammapy-0.25
 
 Note that you have to execute that activation command (but not the environment
 creation command) every time you open a new terminal window, because the default
@@ -63,7 +63,7 @@ the datasets and proceed with the following commands:
 
 .. code-block:: bash
 
-    gammapy download notebooks --release 0.24
+    gammapy download notebooks --release 0.25
     gammapy download datasets
     export GAMMAPY_DATA=$PWD/gammapy-datasets
 

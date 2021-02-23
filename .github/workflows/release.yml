@@ -8,8 +8,6 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v2
-        with:
-          ref: master
       - name: modif docs
         run: |
           sed -i 's/0.18.2/${{ github.event.release.tag_name }}/' docs/install/index.rst
@@ -28,6 +26,5 @@ jobs:
       - name: commit changes
         uses: stefanzweifel/git-auto-commit-action@v4.9.0
         with:
-          branch: master
           commit_author: GitHub Actions <actions@github.com>
           commit_message: commit docs modif

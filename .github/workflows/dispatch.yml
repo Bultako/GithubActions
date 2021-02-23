@@ -10,4 +10,4 @@ jobs:
           curl -XPOST -u "${{ secrets.REMOTE_DISPATCH }}" \
           -H "Accept: application/vnd.github.everest-preview+json" \
           -H "Content-Type: application/json" https://api.github.com/repos/Bultako/GithubReactions/dispatches \
-          --data '{"event_type": "validate"}'
+          --data '{"event_type": "build", "release_number": "v0.18.2"}'

@@ -1,9 +1,9 @@
-name: build docs
+name: release
 on:
   release:
     types: [published]
 jobs:
-  dispatch:
+  process:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo

@@ -6,11 +6,25 @@ jobs:
   dispatch:
     runs-on: ubuntu-latest
     steps:
-      - name: release
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: modif docs
         run: |
-          echo ${{ github.event.release.tag_name }}
-
+          sed -i 's/0.18.2/${{ github.event.release.tag_name }}/' docs/install/index.rst
+#      - name: dispatch web
+#        run: |
 #          curl -XPOST -u "${{ secrets.REMOTE_DISPATCH }}" \
 #          -H "Accept: application/vnd.github.everest-preview+json" \
 #          -H "Content-Type: application/json" https://api.github.com/repos/Bultako/GithubReactions/dispatches \
-#          --data '{"event_type": "release", "client_payload": { "release": "1.2.3" }}'
+#          --data '{"event_type": "release", "client_payload": { "release": "${{ github.event.release.tag_name }}" }}'
+#      - name: dispatch docs
+#        run: |
+#          curl -XPOST -u "${{ secrets.REMOTE_DISPATCH }}" \
+#          -H "Accept: application/vnd.github.everest-preview+json" \
+#          -H "Content-Type: application/json" https://api.github.com/repos/Bultako/GithubReactions/dispatches \
+#          --data '{"event_type": "release", "client_payload": { "release": "${{ github.event.release.tag_name }}" }}'
+      - name: commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4.9.0
+        with:
+          commit_author: GitHub Actions <actions@github.com>
+          commit_message: commit docs modif
